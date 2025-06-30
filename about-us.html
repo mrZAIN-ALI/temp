@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us – VisaMate</title>
+  <!-- Favicon for browser tab -->
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+  <!-- Reset default margins -->
+  <style>
+    html, body { margin: 0 !important; padding: 0 !important; }
+  </style>
+
+  <!-- Fonts & Styles -->
+  <link rel="stylesheet" href="./assets/css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Ionicons -->
+  <script
+    type="module"
+    src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+  ></script>
+  <script
+    nomodule
+    src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+  ></script>
+</head>
+<!-- WhatsApp & Phone Dock -->
+<div class="floating-contact">
+<!-- Replace -->
+<a id="whatsapp-link" class="whatsapp-dock" target="_blank" aria-label="Chat on WhatsApp">
+  <ion-icon name="logo-whatsapp"></ion-icon>
+</a>
+<a id="phone-link" class="phone-dock" aria-label="Call us">
+  <ion-icon name="call-outline"></ion-icon>
+  <span id="phone-number"></span>
+</a>
+
+</div>
+<body>
+  <!-- 1) Universal Header with its own go-top link -->
+  <div id="include-header"></div>
+
+  <!-- 2) Popup Container -->
+  <div id="popup-container"></div>
+
+  <!-- 3) About Banner -->
+ <div class="heroinner"></div>
+
+  <!-- 4) About Us Section -->
+  <main class="section about-section">
+    <h2 class="section-title">About Us</h2>
+    <div class="container about-content">
+      <p>
+        VisaMate was founded with one goal in mind: to make international travel
+        simpler and more accessible. Over the years, we’ve helped thousands of
+        travelers secure visas—from tourist and student visas to work permits—
+        with speed, transparency, and care.
+      </p>
+
+      <h3>Our Mission</h3>
+      <p>
+        To streamline every step of the visa application journey through expert
+        guidance, personalized support, and up-to-date consulate knowledge.
+      </p>
+
+      <h3>Our Vision</h3>
+      <p>
+        A world where border bureaucracy never stands between people and their
+        dreams—whether it’s studying abroad, exploring new cultures, or advancing
+        your career internationally.
+      </p>
+
+      <h3>Our Values</h3>
+      <ul>
+        <li><strong>Integrity:</strong> We handle your documents and personal data
+            with the highest confidentiality.</li>
+        <li><strong>Excellence:</strong> Our team trains continuously to stay ahead
+            of changing visa rules and digital best practices.</li>
+        <li><strong>Empathy:</strong> We know visa applications can be stressful,
+            so we’re always here to answer questions and provide reassurance.</li>
+      </ul>
+
+      <p>
+        Ready to get started? Click “Get Visa Now” in the navbar, or
+        <a href="visa-services.html">browse our Visa Services</a> to find your
+        perfect destination.
+      </p>
+    </div>
+  </main>
+
+  <!-- 5) Footer -->
+  <div id="include-footer"></div>
+
+  <!-- 6) Load header, footer, then initialize -->
+  <script src="./assets/js/include-partials.js"></script>
+  <script>
+    document.getElementById('include-header').addEventListener('partialLoaded', () => {
+      // Mobile nav
+      if (typeof setupMobileNavbar === 'function') setupMobileNavbar();
+      // Sticky header & go-top (header contains its own go-top link)
+      if (typeof setupGoTopButton === 'function') setupGoTopButton();
+      // More dropdown
+      (function() {
+        const btn = document.getElementById('moreDropdownBtn');
+        const menu = document.getElementById('moreDropdown');
+        if (!btn || !menu) return;
+        btn.addEventListener('click', e => {
+          e.stopPropagation();
+          menu.classList.toggle('open');
+        });
+        document.addEventListener('click', () => menu.classList.remove('open'));
+      })();
+      // Load site-config.js
+      const cfg = document.createElement('script');
+      cfg.src = './assets/js/site-config.js';
+      document.body.appendChild(cfg);
+      // Load main script and trigger popup
+      const main = document.createElement('script');
+      main.src = './assets/js/script.js';
+      main.onload = () => {
+        if (typeof loadPopupPartial === 'function') loadPopupPartial();
+      };
+      document.body.appendChild(main);
+    });
+  </script>
+</body>
+</html>

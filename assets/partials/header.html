@@ -1,0 +1,62 @@
+<!-- assets/partials/header.html -->
+<header class="header" data-header>
+  <!-- Overlay for mobile menu -->
+  <div class="overlay" data-overlay></div>
+  
+  <div class="header-top">
+    <div class="container">
+      <a href="tel:+01123456790" class="helpline-box">
+        <div class="icon-box">
+          <ion-icon name="call-outline"></ion-icon>
+        </div>
+        <div class="wrapper">
+          <p class="helpline-title">For Further Inquiries :</p>
+          <p class="helpline-number" id="helpline-number"></p>
+        </div>
+      </a>
+      <a href="index.html" class="logo">
+        <img src="./assets/images/logo.svg" alt="VisaMate logo" />
+      </a>
+      <div class="header-btn-group">
+        <button class="nav-open-btn" aria-label="Open Menu" data-nav-open-btn>
+          <ion-icon name="menu-outline"></ion-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="header-bottom">
+    <div class="container">
+      <ul class="social-list">
+        <li><a id="social-instagram" class="social-link" target="_blank"><ion-icon name="logo-instagram"></ion-icon></a></li>
+        <li><a id="social-facebook" class="social-link" target="_blank"><ion-icon name="logo-facebook"></ion-icon></a></li>
+      </ul>
+      <nav class="navbar" data-navbar>
+        <div class="navbar-top">
+          <a href="index.html" class="logo">
+            <img src="./assets/images/logo.svg" alt="VisaMate logo" />
+          </a>
+          <button class="nav-close-btn" aria-label="Close Menu" data-nav-close-btn>
+            <ion-icon name="close-outline"></ion-icon>
+          </button>
+        </div>
+        <ul class="navbar-list">
+          <li><a href="index.html" class="navbar-link" data-nav-link>home</a></li>
+          <li><a href="about-us.html" class="navbar-link" data-nav-link>about us</a></li>
+          <li><a href="#package" class="navbar-link" data-nav-link>packages</a></li>
+          <li><a href="visa-services.html" class="navbar-link" data-nav-link>visa services</a></li>
+          <li class="navbar-link dropdown" id="moreDropdown" style="position: relative;">
+            <button id="moreDropdownBtn" class="dropdown-toggle" type="button" aria-haspopup="true" aria-expanded="false">
+              MORE <ion-icon name="chevron-down-outline"></ion-icon>
+            </button>
+            <ul class="dropdown-menu" id="moreDropdownMenu" aria-labelledby="moreDropdownBtn">
+              <li><a href="refund-policy.html">REFUND POLICY</a></li>
+              <li><a href="privacy-policy.html">PRIVACY POLICY</a></li>
+              <li><a href="contact-us.html">CONTACT US</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <a href="getvisanow.html" class="btn btn-primary">Get Visa Now</a>
+    </div>
+  </div>
+</header>

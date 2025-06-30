@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Refund Policy – VisaMate</title>
+
+    <!-- Favicon for browser tab -->
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+
+    <!-- Reset margins -->
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="./assets/css/style.css" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Ionicons -->
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+    ></script>
+  </head>
+  <!-- WhatsApp & Phone Dock -->
+<div class="floating-contact">
+<!-- Replace -->
+<a id="whatsapp-link" class="whatsapp-dock" target="_blank" aria-label="Chat on WhatsApp">
+  <ion-icon name="logo-whatsapp"></ion-icon>
+</a>
+<a id="phone-link" class="phone-dock" aria-label="Call us">
+  <ion-icon name="call-outline"></ion-icon>
+  <span id="phone-number"></span>
+</a>
+
+</div>
+  <body>
+    <!-- 1) Universal Header -->
+    <div id="include-header"></div>
+
+    <!-- 2) Popup Container -->
+    <div id="popup-container"></div>
+
+    <!-- 3) Refund Banner -->
+
+    <div
+      class="heroinner"
+      style="
+        background-image: url('./assets/images/about-banner.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        background-color: hsla(0, 0%, 0%, 0.7);
+        background-blend-mode: overlay;
+        display: grid;
+        place-items: center;
+        min-height: 250px;
+        text-align: center;
+        padding-top: 125px;
+      "
+    ></div>
+
+    <!-- 4) Refund Policy Section -->
+    <main class="section refund-section">
+      <h2 class="section-title">Refund Policy</h2>
+      <div class="container">
+        <p>
+          At visamate.co.uk, we aim to provide transparent and reliable visa
+          services. Please read our refund policy carefully before making a
+          payment.
+        </p>
+
+        <h3>Eligibility for Refund</h3>
+        <ul>
+          <li>
+            <strong>Duplicate Payment:</strong> If you have been charged twice
+            for the same service.
+          </li>
+          <li>
+            <strong>Service Not Delivered:</strong> If we are unable to process
+            your application due to our error.
+          </li>
+          <li>
+            <strong>Cancelled Application:</strong> If you cancel your
+            application before we begin processing it.
+          </li>
+        </ul>
+
+        <h3>Non-Refundable Cases</h3>
+        <ul>
+          <li>If your visa is rejected by the embassy/consulate.</li>
+          <li>
+            If your application has already been submitted or is under
+            processing.
+          </li>
+          <li>If incorrect or incomplete information is provided by you.</li>
+        </ul>
+
+        <h3>Refund Process</h3>
+        <p>
+          Refund requests must be made in writing via email to info@visamate.co.uk within 7 days of the payment.
+        </p>
+        <p>
+          Once approved, refunds will be processed within 7–10 business days.
+        </p>
+        <p>Refunds will be made to the original payment method used.</p>
+
+        <h3>Contact Us</h3>
+        <p>For any questions or to request a refund, please contact us at:</p>
+        <p style="display: flex; align-items: center;">
+          <ion-icon name="mail-outline" style="margin-right: 6px;"></ion-icon>
+          <a href="mailto:info@visamate.co.uk" style="color: inherit; text-decoration: none;">info@visamate.co.uk</a>
+        </p>
+        <p style="display: flex; align-items: center;">
+          <ion-icon name="call-outline" style="margin-right: 6px;"></ion-icon>
+          <span>+44 7411 201309</span>
+        </p>
+      </div>
+    </main>
+
+    <!-- 5) Footer -->
+    <div id="include-footer"></div>
+
+    <!-- 6) Load partials, init + popup -->
+    <script src="./assets/js/include-partials.js"></script>
+    <script>
+      document
+        .getElementById("include-header")
+        .addEventListener("partialLoaded", () => {
+          if (typeof setupMobileNavbar === "function") setupMobileNavbar();
+          if (typeof setupGoTopButton === "function") setupGoTopButton();
+          (function () {
+            const btn = document.getElementById("moreDropdownBtn");
+            const menu = document.getElementById("moreDropdown");
+            if (!btn || !menu) return;
+            btn.addEventListener("click", (e) => {
+              e.stopPropagation();
+              menu.classList.toggle("open");
+            });
+            document.addEventListener("click", () =>
+              menu.classList.remove("open")
+            );
+          })();
+          const cfg = document.createElement("script");
+          cfg.src = "./assets/js/site-config.js";
+          document.body.appendChild(cfg);
+          const main = document.createElement("script");
+          main.src = "./assets/js/script.js";
+          main.onload = () => {
+            if (typeof loadPopupPartial === "function") loadPopupPartial();
+          };
+          document.body.appendChild(main);
+        });
+    </script>
+  </body>
+</html>

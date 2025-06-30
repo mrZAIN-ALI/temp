@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Terms &amp; Conditions – VisaMate</title>
+
+  <!-- Favicon -->
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml"/>
+
+  <!-- Main stylesheet -->
+  <link rel="stylesheet" href="./assets/css/style.css"/>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Ionicons -->
+  <script
+    type="module"
+    src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+  ></script>
+  <script
+    nomodule
+    src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+  ></script>
+</head>
+<body>
+  <!-- 1) Universal Header -->
+  <div id="include-header"></div>
+
+  <!-- 2) Popup Container -->
+  <div id="popup-container"></div>
+
+  <!-- 3) Banner Overlay -->
+  <div
+    class="heroinner"
+    style="
+      background-image: url('./assets/images/about-banner.jpg');
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+      background-color: hsla(0, 0%, 0%, 0.7);
+      background-blend-mode: overlay;
+      display: grid;
+      place-items: center;
+      min-height: 250px;
+      text-align: center;
+      padding-top: 125px;
+    "
+  ></div>
+
+  <!-- 4) Terms & Conditions Section -->
+  <main class="section terms-section">
+    <div class="container terms-content">
+      <p class="terms-intro">
+        Please read these terms and conditions carefully before using Our Service.
+      </p>
+      <h2 class="section-title">Terms &amp; Conditions</h2>
+
+      <h3>Interpretation and Definitions</h3>
+      <h4>Interpretation</h4>
+      <p>
+        Words with initial capital letters have meanings defined under the following conditions. These definitions apply whether in singular or plural.
+      </p>
+      <h4>Definitions</h4>
+      <p>
+        <strong>Affiliate</strong> means an entity that controls, is controlled by, or is under common control with a party (50%+ ownership).<br/>
+        <strong>Company</strong> (referred to as “We”, “Us” or “Our”) refers to VisaMate.<br/>
+        <strong>Service</strong> refers to this Website, accessible from <a href="https://visamate.com">https://visamate.com</a>.<br/>
+        <strong>You</strong> means the individual or entity using the Service.
+      </p>
+
+      <h3>Acknowledgment</h3>
+      <p>
+        These Terms govern use of the Service and the agreement between You and the Company. By accessing or using the Service You agree to be bound by these Terms. If You disagree, do not access the Service.
+      </p>
+
+      <h3>Links to Other Websites</h3>
+      <p>
+        Our Service may include links to third-party sites not owned by the Company. We assume no responsibility for their content or practices.
+      </p>
+
+      <h3>Termination</h3>
+      <p>
+        We may suspend or terminate Your access immediately—without notice or liability—for any reason, including breach of these Terms.
+      </p>
+
+      <h3>Limitation of Liability</h3>
+      <p>
+        To the maximum extent permitted by law, the Company’s liability for any claim arising from the Service is limited to the amount You paid in the past 12 months, or $100 if no payment was made.
+      </p>
+
+      <h3>"AS IS" and "AS AVAILABLE"</h3>
+      <p>
+        The Service is provided “AS IS” and “AS AVAILABLE”, with all faults and without warranty of any kind.
+      </p>
+
+      <h3>Governing Law</h3>
+      <p>
+        These Terms are governed by the laws of Pakistan. Disputes are subject to the exclusive jurisdiction of the courts of Lahore.
+      </p>
+
+      <h3>Changes to Terms</h3>
+      <p>
+        We may modify these Terms at any time. Changes become effective upon posting. Continued use constitutes acceptance of updates.
+      </p>
+
+      <h3>Contact Us</h3>
+      <p>
+        For questions, reach us at:<br/>
+        <ion-icon name="call-outline"></ion-icon>
+        <a href="tel:+923216467752">+92 321 6467752</a><br/>
+        <ion-icon name="mail-outline"></ion-icon>
+        <a href="mailto:support@visamate.com">support@visamate.com</a>
+      </p>
+    </div>
+  </main>
+
+  <!-- 5) Footer -->
+  <div id="include-footer"></div>
+
+  <!-- 6) Load header & footer, then init everything -->
+  <script src="./assets/js/include-partials.js"></script>
+  <!-- 6) Load header & footer, then init everything -->
+  <script src="./assets/js/include-partials.js"></script>
+  <script>
+    Promise.all([
+      includePartial('include-header', './assets/partials/header.html'),
+      includePartial('include-footer', './assets/partials/footer.html')
+    ]).then(() => {
+      // Core UI hooks
+      if (typeof setupMobileNavbar === 'function') setupMobileNavbar();
+      if (typeof setupGoTopButton  === 'function') setupGoTopButton();
+      if (typeof setupMoreDropdown === 'function') setupMoreDropdown();
+
+      // ── Newsletter subscription override ────────────────────────────
+      const form = document.getElementById('newsletter-form');
+      if (form) {
+        form.addEventListener('submit', e => {
+          e.preventDefault();
+          // show your “Thank You” dialog
+          const dlg = document.createElement('div');
+          dlg.className = 'submission-dialog';
+          dlg.innerHTML = `
+            <div class="dialog-content">
+              <ion-icon name="checkmark-circle-outline"></ion-icon>
+              <h2>Thank You!</h2>
+              <p>Thanks for subscribing!</p>
+            </div>`;
+          document.body.appendChild(dlg);
+          // redirect to home after 2s
+          setTimeout(() => { window.location.href = 'index.html'; }, 2000);
+        });
+      }
+
+      // ── Load the rest of your site scripts (popup, tabs, forms, etc.) ──
+      const cfg = document.createElement('script');
+      cfg.src = './assets/js/site-config.js';
+      document.body.appendChild(cfg);
+
+      const main = document.createElement('script');
+      main.src = './assets/js/script.js';
+      main.onload = () => {
+        if (typeof loadPopupPartial === 'function') loadPopupPartial();
+      };
+      document.body.appendChild(main);
+    });
+  </script>
+
+</body>
+</html>

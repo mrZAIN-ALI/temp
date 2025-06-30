@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Us – VisaMate</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+
+    <!-- Reset margins -->
+    <style>
+      html, body { margin: 0; padding: 0; }
+    </style>
+
+    <!-- Main stylesheet -->
+    <link rel="stylesheet" href="./assets/css/style.css" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Ionicons -->
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+    ></script>
+  </head>
+<!-- WhatsApp & Phone Dock -->
+<div class="floating-contact">
+<!-- Replace -->
+<a id="whatsapp-link" class="whatsapp-dock" target="_blank" aria-label="Chat on WhatsApp">
+  <ion-icon name="logo-whatsapp"></ion-icon>
+</a>
+<a id="phone-link" class="phone-dock" aria-label="Call us">
+  <ion-icon name="call-outline"></ion-icon>
+  <span id="phone-number"></span>
+</a>
+
+</div>
+  <body>
+    <!-- 1) Universal Header -->
+    <div id="include-header"></div>
+
+    <!-- 2) Popup Container -->
+    <div id="popup-container"></div>
+
+    <!-- 3) Banner (reuse your existing banner) -->
+    <div
+      class="heroinner"
+      style="
+        background-image: url('./assets/images/about-banner.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        background-color: hsla(0, 0%, 0%, 0.7);
+        background-blend-mode: overlay;
+        display: grid;
+        place-items: center;
+        min-height: 250px;
+        text-align: center;
+        padding-top: 125px;
+      "
+    ></div>
+
+    <!-- 4) Contact Us Section -->
+    <main class="section refund-section">
+      <h2 class="section-title">Contact Us</h2>
+      <div class="container">
+        <!-- Email & Phone -->
+        <h3>Email &amp; Phone</h3>
+        <p style="display: flex; align-items: center; gap: 0.5rem;">
+          <ion-icon name="call-outline"></ion-icon>
+          <span>+44 7411 201309</span>
+        </p>
+        <p style="display: flex; align-items: center; gap: 0.5rem;">
+          <ion-icon name="mail-outline"></ion-icon>
+          <a href="mailto:info@visamate.co.uk">info@visamate.co.uk</a>
+        </p>
+
+        <!-- Address -->
+        <h3>Address</h3>
+        <p>863 High Road, Ilford, England, IG3 8TG</p>
+
+        <!-- Social Media -->
+        <h3>Social Media</h3>
+        <ul class="social-list" style="display: flex; gap: 1rem; padding: 0; list-style: none;">
+        <a href="https://www.facebook.com/share/16Yv2tayX7/" aria-label="Facebook" style="font-size: 2rem;">
+            <ion-icon name="logo-facebook"></ion-icon>
+        </a>
+        <a href="https://www.instagram.com/visamate.uk?igsh=ZDZtd3Z3cnNlZnRj" aria-label="Instagram" style="font-size: 2rem;">
+            <ion-icon name="logo-instagram"></ion-icon>
+        </a>
+          
+        </ul>
+      </div>
+    </main>
+
+    <!-- 5) Footer -->
+    <div id="include-footer"></div>
+
+    <!-- 6) Load partials + scripts -->
+    <script src="./assets/js/include-partials.js"></script>
+    <script>
+      document
+        .getElementById("include-header")
+        .addEventListener("partialLoaded", () => {
+          if (typeof setupMobileNavbar === "function") setupMobileNavbar();
+          if (typeof setupGoTopButton === "function") setupGoTopButton();
+          // more-dropdown, site-config.js, script.js, popup...
+          (function () {
+            const btn = document.getElementById("moreDropdownBtn");
+            const menu = document.getElementById("moreDropdown");
+            if (!btn || !menu) return;
+            btn.addEventListener("click", (e) => {
+              e.stopPropagation();
+              menu.classList.toggle("open");
+            });
+            document.addEventListener("click", () => menu.classList.remove("open"));
+          })();
+          const cfg = document.createElement("script");
+          cfg.src = "./assets/js/site-config.js";
+          document.body.appendChild(cfg);
+          const main = document.createElement("script");
+          main.src = "./assets/js/script.js";
+          main.onload = () => {
+            if (typeof loadPopupPartial === "function") loadPopupPartial();
+          };
+          document.body.appendChild(main);
+        });
+    </script>
+  </body>
+</html>

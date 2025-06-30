@@ -1,0 +1,46 @@
+/* reset.css */
+/*-----------------------------------*\
+ * #RESET
+\*-----------------------------------*/
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+li {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+}
+a,
+img,
+span,
+input,
+label,
+button,
+ion-icon {
+  display: block;
+}
+input,
+button {
+  background: none;
+  border: none;
+  font: inherit;
+}
+button {
+  cursor: pointer;
+}
+input {
+  width: 100%;
+}
+ion-icon {
+  pointer-events: none;
+}
+html {
+  font-family: var(--ff-poppins);
+  scroll-behavior: smooth;
+}
+body {
+  background: var(--white);
+}

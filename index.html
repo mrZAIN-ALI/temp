@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VisaMate - Visa Agency</title>
+
+    <!-- 
+    - favicon
+  -->
+    <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml" />
+
+    <!-- 
+    - custom css link
+  -->
+    <link rel="stylesheet" href="./assets/css/style.css" />
+
+<!-- Then only the page‐specific file: -->
+<!-- on home.html -->
+<link rel="stylesheet" href="assets/css/pages/home.css">
+    <!-- 
+    - google font link
+  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+<!-- WhatsApp & Phone Dock -->
+<div class="floating-contact">
+<!-- Replace -->
+<a id="whatsapp-link" class="whatsapp-dock" target="_blank" aria-label="Chat on WhatsApp">
+  <ion-icon name="logo-whatsapp"></ion-icon>
+</a>
+<a id="phone-link" class="phone-dock" aria-label="Call us">
+  <ion-icon name="call-outline"></ion-icon>
+  <span id="phone-number"></span>
+</a>
+
+</div>
+
+  <body id="top">
+     <div id="include-header"></div>
+
+
+    <main>
+      <article>
+        <!-- 
+        - #HERO
+      -->
+
+        <section class="hero" id="home">
+          <div class="container">
+            <h2 class="h1 hero-title">From here to anywhere</h2>
+
+    <p class="hero-text">
+  We simplify the visa process so you can focus on your destination. Trusted by travelers for fast and reliable visa services worldwide.
+</p>
+
+
+            <div class="btn-group">
+              <button class="btn btn-primary" onclick="window.location.href='visa-services.html'">Learn more</button>
+
+              <button class="btn btn-secondary" onclick="window.location.href='getvisanow.html'">Book now</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- 
+        - #TOUR SEARCH
+      -->
+
+
+
+<section class="inquire-section">
+  <div class="inquire-card inquire-forms">
+
+    <!-- Tabs -->
+    <div class="inquire-tabs">
+      <button class="inquire-tab-btn active" data-tab="visa">Visa Services</button>
+      <button class="inquire-tab-btn" data-tab="flights">Flights</button>
+    </div>
+
+    <!-- Visa Form -->
+    <form id="visa-form" class="inquire-form-tab active"
+          action="https://formsubmit.co/42e3c04f99c1c62132c38fba40d46842"
+          method="POST" novalidate>
+      <!-- FormSubmit hidden fields -->
+      <input type="hidden" name="_subject"   value="VisaMate Visa Service Inquiry"/>
+      <input type="hidden" name="_template"  value="table"/>
+      <input type="hidden" name="_captcha"   value="false"/>
+
+      <div class="inquire-form-grid">
+        <!-- 6 fields, 2 rows × 3 cols -->
+        <div class="inquire-field-group">
+          <label for="inqu-nat">Nationality *</label>
+          <input id="inqu-nat" name="Nationality" type="text" required placeholder="Enter Your Nationality">
+          <div class="error-message">Please enter your nationality</div>
+        </div>
+        <div class="inquire-field-group">
+          <label for="inqu-time">Best Time to Contact You *</label>
+          <input id="inqu-time" name="Best Time to Contact You" type="text" required placeholder="Time">
+          <div class="error-message">Please specify best time</div>
+        </div>
+        <div class="inquire-field-group">
+          <label for="inqu-name">Name *</label>
+          <input id="inqu-name" name="Name" type="text" required placeholder="Enter Your Full Name">
+          <div class="error-message">Please enter your name</div>
+        </div>
+        <div class="inquire-field-group">
+          <label for="inqu-phone">Number *</label>
+          <input id="inqu-phone" name="Phone" type="tel" required placeholder="Enter Your Number">
+          <div class="error-message">Please enter a valid number</div>
+        </div>
+        <div class="inquire-field-group">
+          <label for="inqu-email">Email *</label>
+          <input id="inqu-email" name="Email" type="email" required placeholder="Enter Your Email">
+          <div class="error-message">Please enter a valid email</div>
+        </div>
+        <div class="inquire-field-group">
+          <label for="inqu-plan">Travel Plan *</label>
+          <input id="inqu-plan" name="Travel Plan" type="text" required placeholder="When is the plan to travel?">
+          <div class="error-message">Please describe your travel plan</div>
+        </div>
+      </div>
+
+      <button type="submit" class="inqu-btn-primary">Send Message</button>
+    </form>
+
+    <!-- Flights Form -->
+    <form id="flights-form" class="inquire-form-tab"
+          action="https://formsubmit.co/42e3c04f99c1c62132c38fba40d46842"
+          method="POST" novalidate>
+      <input type="hidden" name="_subject"   value="VisaMate Flight Inquiry"/>
+      <input type="hidden" name="_template"  value="table"/>
+      <input type="hidden" name="_captcha"   value="false"/>
+
+      <div class="inquire-form-grid flights-grid">
+        <!-- 9 fields, 3 rows × up to 4 cols -->
+        <div class="inquire-field-group">
+          <label for="fl-dep">Departure *</label>
+          <input id="fl-dep" name="Departure" type="text" required placeholder="City or Airport">
+          <div class="error-message">Enter departure</div>
+        </div>
+        <div class="inquire-field-group">
+          <label for="fl-dest">Destination *</label>
+          <input id="fl-dest" name="Destination" type="text" required placeholder="Country or City">
+          <div class="error-message">Enter destination</div>
+        </div>
+        <div class="inquire-field-group">
+          <label for="fl-dd">Departure Date *</label>
+          <input id="fl-dd" name="Departure Date" type="date" required>
+          <div class="error-message">Select departure date</div>
+        </div>
+        <div class="inquire-field-group">
+          <label for="fl-rr">Return Date</label>
+          <input id="fl-rr" name="Return Date" type="date">
+        </div>
+
+        <div class="inquire-field-group">
+          <label for="fl-name">Full Name *</label>
+          <input id="fl-name" name="Full Name" type="text" required placeholder="Your Name">
+          <div class="error-message">Please enter your name</div>
+        </div>
+        <div class="inquire-field-group">
+          <label for="fl-email">Email *</label>
+          <input id="fl-email" name="Email" type="email" required placeholder="you@email.com">
+          <div class="error-message">Please enter a valid email</div>
+        </div>
+        <div class="inquire-field-group">
+          <label for="fl-phone">Phone Number *</label>
+          <input id="fl-phone" name="Phone Number" type="tel" required placeholder="+92 3xx xxx xxxx">
+          <div class="error-message">Please enter a valid phone</div>
+        </div>
+        <div class="inquire-field-group">
+          <label for="fl-adults">Adults *</label>
+          <input id="fl-adults" name="Adults" type="number" min="1" value="1" required>
+          <div class="error-message">Enter number of adults</div>
+        </div>
+        <div class="inquire-field-group">
+          <label for="fl-children">Children</label>
+          <input id="fl-children" name="Children" type="number" min="0" value="0">
+        </div>
+        <div class="inquire-field-group">
+          <label for="fl-infants">Infants</label>
+          <input id="fl-infants" name="Infants" type="number" min="0" value="0">
+        </div>
+      </div>
+
+      <button type="submit" class="inqu-btn-primary">Inquire Now</button>
+    </form>
+
+  </div>
+</section>
+
+<!-- 
+  - #VISA PACKAGES
+-->
+<section id="package" class="package">
+  <div class="container">
+    <p class="section-subtitle">Visa Services</p>
+    <h2 class="h2 section-title">Choose Your Visa Package</h2>
+    <p class="section-text">
+      Whether you're applying for a tourist, student, or work visa — we offer flexible packages to suit your needs and urgency.
+    </p>
+
+    <div class="package-cards">
+      <!-- Standard Service Card -->
+      <div class="package-card">
+        <img
+          src="./assets/images/packege-1.jpg"
+          alt="Standard Service"
+          class="package-card__img"
+        />
+        <div class="package-card__body">
+          <h3 class="package-card__title">Standard Service</h3>
+          <p class="package-card__text">
+            Smart, steady, and stress-free – your visa, done right and on time.
+          </p>
+          <a href="getvisanow.html" class="package-card__btn">Apply Now</a>
+        </div>
+      </div>
+
+      <!-- Premium Service Card -->
+      <div class="package-card package-card premium">
+        <img
+          src="./assets/images/packege-3.jpg"
+          alt="Premium Service"
+          class="package-card__img"
+        />
+        <div class="package-card__body">
+          <h3 class="package-card__title">Premium Service</h3>
+          <p class="package-card__text">
+            Fast-track to your dream destination – priority processing with white-glove support.
+          </p>
+          <a href="getvisanow.html" class="package-card__btn">Apply Now</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================= -->
+<!-- Top Values For You! Section  -->
+<!-- ============================= -->
+<section id="values" class="values-section">
+  <div class="container">
+    <h2 class="values-title">TOP VALUES FOR YOU!</h2>
+    <p class="values-subtitle">Our best perks, hand-picked for your perfect trip.</p>
+    <div class="values-grid">
+      <div class="value-card">
+        <div class="value-card__shadow"></div>
+        <div class="value-card__content">
+          <img src="./assets/images/travel.png" alt="" class="value-card__icon">
+          <h3 class="value-card__heading">Cheapest Holidays Packages</h3>
+          <p class="value-card__text">
+            The cheapest holiday packages for unforgettable European adventures!
+          </p>
+        </div>
+      </div>
+      <div class="value-card">
+        <div class="value-card__shadow"></div>
+        <div class="value-card__content">
+          <img src="./assets/images/travel-luggage.png" alt="" class="value-card__icon">
+          <h3 class="value-card__heading">Cheapest Air Tickets</h3>
+          <p class="value-card__text">
+            Discover unbeatable deals on the cheapest air tickets with Trip2go, 
+            your trusted partner for seamless European travel!
+          </p>
+        </div>
+      </div>
+      <div class="value-card">
+        <div class="value-card__shadow"></div>
+        <div class="value-card__content">
+          <img src="./assets/images/visa.png" alt="" class="value-card__icon">
+          <h3 class="value-card__heading">Visa Document Consultation</h3>
+          <p class="value-card__text">
+            Get expert guidance on visa document consultation with Trip2go 
+            for hassle-free European travel!
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- 
+  - #CTA (VisaMate)
+-->
+<section class="cta" id="contact">
+  <div class="container">
+    <div class="cta-content">
+      <p class="section-subtitle">Need a Visa?</p>
+
+      <h2 class="h2 section-title">
+        Let VisaMate Help You Get There!
+      </h2>
+
+      <p class="section-text">
+        Whether it’s a tourist visa, study visa, or work permit — VisaMate simplifies the process for you. Let our experts guide you through hassle-free visa approvals to your dream destination.
+      </p>
+    </div>
+
+    <button class="btn btn-secondary" onclick="window.location.href='getvisanow.html'">Get Free Consultation</button>
+  </div>
+</section>
+
+  <div id="popup-container"></div>
+
+    <!-- 
+    - #FOOTER
+  -->
+  <div id="include-footer"></div>
+    
+    <!-- 
+    - #GO TO TOP
+  -->
+
+    <a href="#top" class="go-top" data-go-top>
+      <ion-icon name="chevron-up-outline"></ion-icon>
+    </a>
+
+    <!-- 
+    - custom js link
+  -->
+    <script src="./assets/js/include-partials.js"></script>
+    <script src="./assets/js/site-config.js"></script>
+
+    <script src="./assets/js/script.js"></script>
+
+    <!-- 
+    - ionicon link
+  -->
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+    ></script>
+  </body>
+</html>

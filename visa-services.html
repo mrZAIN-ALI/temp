@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Visa Services – VisaMate</title>
+  <!-- Favicon for browser tab -->
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+  <!-- Reset default margins -->
+  <style>
+    html, body { margin: 0 !important; padding: 0 !important; }
+  </style>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="./assets/css/style.css" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Ionicons -->
+  <script
+    type="module"
+    src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+  ></script>
+  <script
+    nomodule
+    src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+  ></script>
+</head>
+<!-- WhatsApp & Phone Dock -->
+<div class="floating-contact">
+<!-- Replace -->
+<a id="whatsapp-link" class="whatsapp-dock" target="_blank" aria-label="Chat on WhatsApp">
+  <ion-icon name="logo-whatsapp"></ion-icon>
+</a>
+<a id="phone-link" class="phone-dock" aria-label="Call us">
+  <ion-icon name="call-outline"></ion-icon>
+  <span id="phone-number"></span>
+</a>
+
+</div>
+<body>
+  <!-- 1) Universal Header -->
+  <div id="include-header"></div>
+
+  <!-- 2) Popup Container -->
+  <div id="popup-container"></div>
+
+  <!-- 3) Floating WhatsApp & Phone dock -->
+  <div class="floating-contact">
+    <a
+      id="whatsapp-link"
+      class="whatsapp-dock"
+      target="_blank"
+      aria-label="Chat on WhatsApp"
+    >
+      <ion-icon name="logo-whatsapp"></ion-icon>
+    </a>
+    <a id="phone-link" class="phone-dock" aria-label="Call us">
+      <ion-icon name="call-outline"></ion-icon>
+      <span id="phone-number"></span>
+    </a>
+  </div>
+
+  <!-- 4) Inner hero/banner -->
+  <div class="heroinner"></div>
+  <div class="banner-slogan"></div>
+
+  <!-- 5) Country grid -->
+  <main class="section">
+    <h2 class="section-title">Select Your Visa Destination</h2>
+    <div class="country-grid" id="country-container"></div>
+  </main>
+
+  <!-- 6) Footer -->
+  <div id="include-footer"></div>
+
+  <!-- 7) Load partials + init + popup -->
+  <script src="./assets/js/include-partials.js"></script>
+  <script>
+    document.getElementById('include-header').addEventListener('partialLoaded', () => {
+      // Initialize mobile nav
+      if (typeof setupMobileNavbar === 'function') setupMobileNavbar();
+      // Initialize sticky header & go-top
+      if (typeof setupGoTopButton === 'function') setupGoTopButton();
+      // Initialize More dropdown
+      (function() {
+        const btn = document.getElementById('moreDropdownBtn');
+        const menu = document.getElementById('moreDropdown');
+        if (!btn || !menu) return;
+        btn.addEventListener('click', e => {
+          e.stopPropagation();
+          menu.classList.toggle('open');
+        });
+        document.addEventListener('click', () => menu.classList.remove('open'));
+      })();
+
+      // Load site-config.js
+      const cfg = document.createElement('script');
+      cfg.src = './assets/js/site-config.js';
+      document.body.appendChild(cfg);
+
+      // Load main script and then show popup
+      const main = document.createElement('script');
+      main.src = './assets/js/script.js';
+      main.onload = () => {
+        if (typeof loadPopupPartial === 'function') loadPopupPartial();
+      };
+      document.body.appendChild(main);
+    });
+  </script>
+
+  <!-- 8) Country-grid logic -->
+  <script>
+    function goToInquiry(name, code) {
+      window.location.href = `inquire-us.html?country=${encodeURIComponent(
+        name
+      )}&code=${code}`;
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const countries = [
+        { name: "France", code: "fr" },
+        { name: "Spain", code: "es" },
+        { name: "United States", code: "us" },
+        { name: "China", code: "cn" },
+        { name: "Italy", code: "it" },
+        { name: "Turkey", code: "tr" },
+        { name: "Mexico", code: "mx" },
+        { name: "Germany", code: "de" },
+        { name: "Thailand", code: "th" },
+        { name: "United Kingdom", code: "gb" },
+        { name: "Japan", code: "jp" },
+        { name: "Austria", code: "at" },
+        { name: "Greece", code: "gr" },
+        { name: "Russia", code: "ru" },
+        { name: "Canada", code: "ca" },
+        { name: "Hong Kong", code: "hk" },
+        { name: "Malaysia", code: "my" },
+        { name: "Saudi Arabia", code: "sa" },
+        { name: "Netherlands", code: "nl" },
+        { name: "South Korea", code: "kr" },
+        { name: "Vietnam", code: "vn" },
+        { name: "United Arab Emirates", code: "ae" },
+        { name: "Portugal", code: "pt" },
+        { name: "Switzerland", code: "ch" },
+        { name: "Croatia", code: "hr" },
+        { name: "Poland", code: "pl" },
+        { name: "Czech Republic", code: "cz" },
+        { name: "Hungary", code: "hu" },
+        { name: "Sweden", code: "se" },
+        { name: "Belgium", code: "be" },
+      ];
+
+      const container = document.getElementById("country-container");
+      countries.forEach((c) => {
+        const card = document.createElement("div");
+        card.className = "country-card";
+        card.innerHTML = `
+          <div class="flag-wrapper">
+            <img
+              src="./assets/images/flags/${c.code}.svg"
+              alt="${c.name} Flag"
+              class="flag-img"
+            />
+          </div>
+          <h3 class="country-name">${c.name}</h3>
+          <button class="btn btn-primary"
+                  onclick="goToInquiry('${c.name}','${c.code}')">
+            Apply
+          </button>
+        `;
+        container.appendChild(card);
+      });
+    });
+  </script>
+</body>
+</html>
